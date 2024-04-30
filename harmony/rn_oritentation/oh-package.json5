@@ -1,0 +1,11 @@
+{
+  "name": "@react-native-oh-tpl/react-native-orientation",
+  "version": "3.1.3-0.0.1",
+  "description": "Listen to device orientation changes in React Native applications and programmatically set preferred orientations on a per screen basis",
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@rnoh/react-native-openharmony": 'file:../react_native_openharmony'
+  }
+}
