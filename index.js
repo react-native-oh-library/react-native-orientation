@@ -1,4 +1,10 @@
-var Orientation = require('react-native').NativeModules.Orientation;
+
+
+import { TurboModuleRegistry } from "react-native";
+
+var Orientation =TurboModuleRegistry ? 
+TurboModuleRegistry.get('ReactNativeOrientation') :
+require('react-native').NativeModules.Orientation;
 var DeviceEventEmitter = require('react-native').DeviceEventEmitter;
 
 var listeners = {};
@@ -34,7 +40,6 @@ module.exports = {
       cb(error, orientation);
     });
   },
-
   lockToPortrait() {
     Orientation.lockToPortrait();
   },
@@ -56,27 +61,26 @@ module.exports = {
   },
 
   addOrientationListener(cb) {
-    var key = getKey(cb);
-    listeners[key] = DeviceEventEmitter.addListener(orientationDidChangeEvent,
-      (body) => {
-        cb(body.orientation);
-      });
+      var key = getKey(cb);
+      Orientation.addOrientationListener();
+      listeners[key] = DeviceEventEmitter.addListener(orientationDidChangeEvent,
+        (body) => {
+          cb(body.orientation);
+        });
   },
 
   removeOrientationListener(cb) {
     var key = getKey(cb);
-
     if (!listeners[key]) {
       return;
     }
-
     listeners[key].remove();
     listeners[key] = null;
   },
 
   addSpecificOrientationListener(cb) {
     var key = getKey(cb);
-
+    Orientation.addSpecificOrientationListener();
     listeners[key] = DeviceEventEmitter.addListener(specificOrientationDidChangeEvent,
       (body) => {
         cb(body.specificOrientation);
