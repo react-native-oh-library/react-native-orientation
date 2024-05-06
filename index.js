@@ -71,6 +71,7 @@ module.exports = {
 
   removeOrientationListener(cb) {
     var key = getKey(cb);
+    Orientation.removeOrientationListener();
     if (!listeners[key]) {
       return;
     }
@@ -89,7 +90,7 @@ module.exports = {
 
   removeSpecificOrientationListener(cb) {
     var key = getKey(cb);
-
+    Orientation.removeSpecificOrientationListener();
     if (!listeners[key]) {
       return;
     }
