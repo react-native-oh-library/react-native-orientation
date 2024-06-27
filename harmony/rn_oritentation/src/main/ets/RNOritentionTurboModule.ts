@@ -76,11 +76,11 @@ export class RNOrientationTurboModule extends TurboModule implements TM.ReactNat
     if (orientation === 0) {
       return 'PORTRAIT';
     } else if (orientation === 1) {
-      return 'LANDSCAPE_LEFT';
+      return 'LANDSCAPE_RIGHT';
     } else if (orientation === 2) {
       return 'PORTRAIT_INVERTED';
     } else if (orientation === 3) {
-      return 'LANDSCAPE_RIGHT';
+      return 'LANDSCAPE_LEFT';
     } else {
       return 'UNKNOWN';
     }
